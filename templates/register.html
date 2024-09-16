@@ -1,0 +1,27 @@
+<!-- register.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <h1>Register</h1>
+
+    <form action="/register" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required>
+        {% if 'username_error' in get_flashed_messages(category_filter=['username_error']) %}
+            <p style="color: red;">{{ get_flashed_messages(category_filter=['username_error'])[0] }}</p>
+        {% endif %}
+        <br>
+        
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required><br>
+    
+        <input type="submit" value="Register">
+    </form>
+    <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+</body>
+</html>
