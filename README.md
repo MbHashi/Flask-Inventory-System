@@ -70,13 +70,13 @@ Welcome to the Inventory Management System project! This is a web-based applicat
   **6. Access the application:**
   Go to http://127.0.0.1:5000/ in your browser.
 
-###Usage
+### Usage
   **Add Items:** Use the form on the main page to add new inventory items.
 	**Search:** Search for items by name or description.
 	**Edit Items:** Click on the “Edit” button next to an item to update its details.
 	**Delete Items:** Click on the “Delete” button next to an item to remove it from the database.
 
-###Frontend Features:
+### Frontend Features:
   **Bootstrap for Design:** The app uses Bootstrap 4 for a clean, responsive user interface.
 	**DataTable for Inventory List:** The inventory list is powered by DataTables, enabling sorting, filtering, and pagination.
 
