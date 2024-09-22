@@ -1,27 +1,38 @@
-<!-- register.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Register</h1>
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="login-box shadow p-5 bg-white rounded">
+            <h2 class="text-center mb-4">Register</h2>
+            <p class="text-center mb-4">Create your account to access your dashboard and inventory table.</p>
 
-    <form action="/register" method="POST">
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required>
-        {% if 'username_error' in get_flashed_messages(category_filter=['username_error']) %}
-            <p style="color: red;">{{ get_flashed_messages(category_filter=['username_error'])[0] }}</p>
-        {% endif %}
-        <br>
-        
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required><br>
-    
-        <input type="submit" value="Register">
-    </form>
-    <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+            <!-- Registration Form -->
+            <form action="{{ url_for('register') }}" method="POST" class="auth-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" class="form-control" placeholder="Enter username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Enter password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
+                <div class="text-center mt-3">
+            <!-- Already have an account link -->
+            <div class="text-center mt-3">
+                <span>Already have an account?</span>
+                <a href="{{ url_for('login') }}">Login here</a>
+            </div>
+        </form>
+        </div>
+    </div>
 </body>
 </html>

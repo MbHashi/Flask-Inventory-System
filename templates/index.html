@@ -5,9 +5,6 @@
     <h1>Inventory Management</h1>
     <h2>Welcome, {{ current_user.username }}!</h2>
 
-    <!-- Logout Button -->
-    <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
-
     <!-- Search Field -->
     <form action="{{ url_for('search_items') }}" method="GET">
         <input type="text" name="q" placeholder="Search inventory..." required>

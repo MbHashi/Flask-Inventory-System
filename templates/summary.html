@@ -1,18 +1,26 @@
-{% extends 'base.html' %}
-
+{% extends "base.html" %}
 {% block content %}
-    <h1>Inventory Summary</h1>
+<div class="container">
+    <h2>Product Details</h2>
     <div class="row">
-        <div class="col-md-6">
-            <h2>Summary</h2>
-            <ul>
-                <li><strong>Quantity in Hand:</strong> {{ quantity_in_hand }}</li>
-                <li><strong>Quantity to be Received:</strong> {{ quantity_to_be_received }}</li>
-            </ul>
+        <!-- Low stock items -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-danger">Low Stock Items</h5>
+                    <p class="card-text">{{ low_stock_items_count }}</p>
+                </div>
+            </div>
         </div>
-        <div class="col-md-6">
-            <h2>Additional Info</h2>
-            <!-- You can add more summary details here, such as top-selling items, low-stock warnings, etc. -->
+        <!-- All items -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">All Items</h5>
+                    <p class="card-text">{{ total_items_count }}</p>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 {% endblock %}

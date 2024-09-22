@@ -7,8 +7,8 @@ class User(UserMixin):
     def __init__(self, username, password_hash, user_id=None):
         self.username = username
         self.password_hash = password_hash
-        if user_id: # User ID should be set if passed
-            self.id = str(user_id)
+        self.id = str(user_id) if user_id else None # User ID should be set if passed
+        
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
@@ -25,9 +25,11 @@ class User(UserMixin):
     def create_user(mongo, username, password):
         # Insert a new user document into MongoDB
         password_hash = generate_password_hash(password)
-        return mongo.db.users.insert_one({
+        result = mongo.db.users.insert_one({
             "username": username,
             "password_hash": password_hash,
-            "created_at": datetime.now(datetime.timezone.utc)
+            "updated_at": datetime.utcnow()
         })
+        user_id = result.inserted_id
+        return User(username, password_hash, user_id)
 
